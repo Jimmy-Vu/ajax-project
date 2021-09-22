@@ -18,12 +18,62 @@
   <header>
     <div class="top-bar">
       <div class="logo">
-        <a data-view="home" href="#"><i class="fas fa-leaf"></i></a>
+        <a data-view="home" href="#" class="home view-button"><i class="fas fa-leaf"></i></a>
       </div>
       <h1 class="site-title">New Horizon Hub</h1>
     </div>
   </header>
   <main>
+    <div class="container">
+      <div class="buttons-container">
+        <div class="row justify-center">
+          <h1 class="welcome-message">Welcome, neighbor.</h1>
+        </div>
+        <div class="row justify-between top-buttons-layout">
+          <a data-view="bugs" href="#" class="view-button bugs-button row justify-center align-center">
+            <i class="fas fa-bug square-icon"></i>
+            <h2 class="hidden">Bugs</h2>
+          </a>
+          <a data-view="marine" href="#" class="view-button marine-button row justify-center align-center">
+            <i class="fas fa-fish square-icon"></i>
+            <h2 class="hidden">Marine Life</h2>
+          </a>
+        </div>
+          <div class="bottom-buttons-layout">
+            <div class="col-half">
+            <a data-view="villagers" href="#" class="view-button villager-button row justify-around align-center">
+              <i class="fas fa-paw square-icon"></i>
+              <h2>Villagers</h2>
+            </a>
+            </div>
+            <div class ="col-half">
+              <a data-view="fossils" href="#" class="view-button fossil-button row justify-around align-center">
+                <i class="fas fa-bone square-icon"></i>
+                <h2>Fossils</h2>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="display-holder column hidden">
+          <h1 data-view="bugs" class="text-400 browse-title text-center">Home</h1>
+          <div class="display-screen">
+            <div class="grid">
+              <div class="item-background"></div>
+              <div class="item-background"></div>
+              <div class="item-background"></div>
+              <div class="item-background"></div>
+              <div class="item-background"></div>
+              <div class="item-background"></div>
+              <div class="item-background"></div>
+              <div class="item-background"></div>
+              <div class="item-background"></div>
+              <div class="item-background"></div>
+              <div class="item-background"></div>
+              <div class="item-background"></div>
+            </div>
+          </div>
+        </div>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

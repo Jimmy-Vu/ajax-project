@@ -1,0 +1,47 @@
+.row {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.hidden {
+  display: none;
+}
+
+.bottom-buttons-layout {
+  flex-direction: column;
+}
+
+.col-half {
+  width: 50%;
+}
+
+.grid {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media screen and (min-width: 800px) {
+  .hidden {
+    display: inline;
+  }
+
+  .bottom-buttons-layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .col-half {
+    max-width: 307px;
+  }
+
+  .grid {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
