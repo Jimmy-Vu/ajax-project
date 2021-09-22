@@ -47,7 +47,8 @@ a:active:not(.home) {
 }
 
 .site-title {
-  margin-left: 25px;
+  margin-left: 5px;
+  font-size: 30px;
 }
 
 .welcome-message {
