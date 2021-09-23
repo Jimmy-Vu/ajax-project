@@ -14,24 +14,32 @@ function buttonNav(event) {
     case 'fish':
       browseTitle.textContent = 'Fishes';
       data.view = 'fish';
+      upperLimit = 12;
+      lowerLimit = 1;
       dataPull('fish');
       mobileButtonNav(event.target.closest('a').getAttribute('data-view'));
       break;
     case 'bugs':
       browseTitle.textContent = 'Bugs';
       data.view = 'bugs';
+      upperLimit = 12;
+      lowerLimit = 1;
       dataPull('bugs');
       mobileButtonNav(event.target.closest('a').getAttribute('data-view'));
       break;
     case 'villagers':
       browseTitle.textContent = 'Villagers';
       data.view = 'villagers';
+      upperLimit = 12;
+      lowerLimit = 1;
       dataPull('villagers');
       mobileButtonNav(event.target.closest('a').getAttribute('data-view'));
       break;
     case 'sea':
       browseTitle.textContent = 'Sea Life';
       data.view = 'sea';
+      upperLimit = 12;
+      lowerLimit = 1;
       dataPull('sea');
       mobileButtonNav(event.target.closest('a').getAttribute('data-view'));
       break;

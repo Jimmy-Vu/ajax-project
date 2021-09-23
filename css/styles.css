@@ -14,10 +14,6 @@ a:link {
   color: inherit;
 }
 
-a:active:not(.home .fa-angle-double-right .fa-angle-double-left) {
-  border: 1px solid black;
-}
-
 .container {
   margin-left: 54px;
   margin-right: 54px;
