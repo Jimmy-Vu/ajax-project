@@ -4,70 +4,121 @@ var buttonContainer = document.querySelector('.buttons-container');
 var displayHolder = document.querySelector('.display-holder');
 var windowWidth = window.innerWidth;
 
-var itemBackground = document.querySelectorAll('.item-background');
-var xhr = new XMLHttpRequest();
-
 for (var i = 0; i < buttonList.length; i++) {
   buttonList[i].addEventListener('click', buttonNav);
 }
 
 function buttonNav(event) {
+  dataClear();
   switch (event.target.closest('a').getAttribute('data-view')) {
-    case 'marine':
-      browseTitle.textContent = 'Marine Life';
+    case 'fish':
+      browseTitle.textContent = 'Fishes';
+      data.view = 'fish';
       dataPull('fish');
       mobileButtonNav(event.target.closest('a').getAttribute('data-view'));
       break;
     case 'bugs':
       browseTitle.textContent = 'Bugs';
+      data.view = 'bugs';
       dataPull('bugs');
       mobileButtonNav(event.target.closest('a').getAttribute('data-view'));
       break;
     case 'villagers':
       browseTitle.textContent = 'Villagers';
+      data.view = 'villagers';
       dataPull('villagers');
       mobileButtonNav(event.target.closest('a').getAttribute('data-view'));
       break;
-    case 'fossils':
-      browseTitle.textContent = 'Fossils';
-      dataPull('fossils');
+    case 'sea':
+      browseTitle.textContent = 'Sea Life';
+      data.view = 'sea';
+      dataPull('sea');
       mobileButtonNav(event.target.closest('a').getAttribute('data-view'));
       break;
     case 'home':
       browseTitle.textContent = 'Home';
-      for (var i = 0; i < iconList.length; i++) {
-        iconList[i].setAttribute('src', '');
-      }
+      data.view = 'home';
+      upperLimit = 12;
+      lowerLimit = 1;
       mobileButtonNav(event.target.closest('a').getAttribute('data-view'));
       break;
   }
 }
 
-var iconList = document.querySelectorAll('.item-background > img');
+var gridStart = document.querySelector('.grid');
+var upperLimit = 12;
+var lowerLimit = 1;
+
+var arrowButtonList = document.querySelectorAll('.arrow-button');
+
+for (var j = 0; j < arrowButtonList.length; j++) {
+  arrowButtonList[j].addEventListener('click', arrowButtonClick);
+}
+
+function arrowButtonClick(event) {
+  if (event.target.className === 'arrow-button fas fa-angle-double-left') {
+    if (lowerLimit === 1) {
+      lowerLimit = 1;
+      upperLimit = 12;
+    } else {
+      lowerLimit -= 12;
+      upperLimit -= 12;
+    }
+  } else if (event.target.className === 'arrow-button fas fa-angle-double-right') {
+    lowerLimit += 12;
+    upperLimit += 12;
+  }
+  switch (data.view) {
+    case 'bugs':
+      dataClear();
+      dataPull('bugs');
+      break;
+    case 'fish':
+      dataClear();
+      dataPull('fish');
+      break;
+    case 'villagers':
+      dataClear();
+      dataPull('villagers');
+      break;
+    case 'sea':
+      dataClear();
+      dataPull('sea');
+      break;
+  }
+}
 
 function dataPull(string) {
+  var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://acnhapi.com/v1/' + string);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-
-    var i = 0;
-
-    while (i < itemBackground.length) {
-      for (var key in xhr.response) {
-        if (string === 'fossils') {
-          iconList[i].setAttribute('src', xhr.response[key].image_uri);
-        } else {
-          iconList[i].setAttribute('src', xhr.response[key].icon_uri);
-        }
-        iconList[i].setAttribute('name', xhr.response[key]['file-name']);
-        iconList[i].setAttribute('id', xhr.response[key].id);
-        iconList[i].style = 'height: 100%;';
-        itemBackground[i].appendChild(iconList[i]);
-        i++;
+    for (var key in xhr.response) {
+      var imgHolder = document.createElement('img');
+      imgHolder.setAttribute('id', xhr.response[key].id);
+      if (Number.parseInt(imgHolder.getAttribute('id'), 10) > upperLimit ||
+      Number.parseInt(imgHolder.getAttribute('id'), 10) < lowerLimit) {
+        continue;
+      } else {
+        imgHolder.setAttribute('src', xhr.response[key].icon_uri);
+        imgHolder.setAttribute('name', xhr.response[key]['file-name']);
+        imgHolder.style = 'height: 100%;';
+        var itemBackground = document.createElement('div');
+        itemBackground.className = 'item-background';
+        itemBackground.appendChild(imgHolder);
+        gridStart.appendChild(itemBackground);
       }
     }
   });
   xhr.send();
+}
+
+function dataClear() {
+  var backgroundList = document.querySelectorAll('.item-background');
+
+  for (var i = 0; i < backgroundList.length; i++) {
+    backgroundList[i].parentNode.removeChild(backgroundList[i]);
+  }
 }
 
 window.addEventListener('resize', function () { windowWidth = window.innerWidth; });

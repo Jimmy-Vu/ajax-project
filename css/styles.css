@@ -14,7 +14,7 @@ a:link {
   color: inherit;
 }
 
-a:active:not(.home) {
+a:active:not(.home .fa-angle-double-right .fa-angle-double-left) {
   border: 1px solid black;
 }
 
@@ -44,6 +44,18 @@ a:active:not(.home) {
 .fa-leaf {
   color: #569f4e;
   font-size: 48px;
+}
+
+.fa-angle-double-left {
+  font-size: 36px;
+  position: absolute;
+  left: 10px;
+}
+
+.fa-angle-double-right {
+  font-size: 36px;
+  position: absolute;
+  right: 10px;
 }
 
 .site-title {
@@ -84,7 +96,7 @@ a:active:not(.home) {
   border-radius: 15px;
 }
 
-.marine-button {
+.fish-button {
   width: 100px;
   height: 100px;
   background-color: #88aed0;
@@ -99,7 +111,7 @@ a:active:not(.home) {
   margin-top: 62px;
 }
 
-.fossil-button {
+.sea-button {
   width: 307px;
   background-color: #998259;
   border-radius: 15px;
@@ -116,13 +128,14 @@ a:active:not(.home) {
 }
 
 .display-screen {
-  width: 300px;
+  width: 355px;
   height: 400px;
   background-color: #fff5d7;
   border-radius: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .text-400 {
@@ -131,8 +144,8 @@ a:active:not(.home) {
 
 .item-background {
   background-color: #c4c4c4;
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
   border-radius: 15px;
   display: flex;
   justify-content: center;
@@ -162,7 +175,7 @@ a:active:not(.home) {
     justify-content: space-around;
   }
 
-  .marine-button {
+  .fish-button {
     width: 307px;
     height: 200px;
     justify-content: space-around;
@@ -173,7 +186,7 @@ a:active:not(.home) {
     width: 100%;
   }
 
-  .fossil-button {
+  .sea-button {
     height: 200px;
     width: 100%;
   }
@@ -188,5 +201,15 @@ a:active:not(.home) {
   .display-screen {
     width: 500px;
     height: 600px;
+  }
+
+  .item-background {
+    background-color: #c4c4c4;
+    height: 100px;
+    width: 100px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
