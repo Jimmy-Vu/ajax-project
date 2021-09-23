@@ -1,0 +1,215 @@
+main {
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #f4f0e4;
+  font-family: 'Roboto', sans-serif;
+}
+
+a:visited,
+a:link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  margin-left: 54px;
+  margin-right: 54px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-bar {
+  width: 100%;
+  height: 90px;
+  background-color: #ebe1bd;
+  display: flex;
+  align-items: center;
+  color: #3d332c;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+}
+
+.fa-leaf {
+  color: #569f4e;
+  font-size: 48px;
+}
+
+.fa-angle-double-left {
+  font-size: 36px;
+  position: absolute;
+  left: 10px;
+}
+
+.fa-angle-double-right {
+  font-size: 36px;
+  position: absolute;
+  right: 10px;
+}
+
+.site-title {
+  margin-left: 5px;
+  font-size: 30px;
+}
+
+.welcome-message {
+  font-weight: 300;
+  margin-top: 30px;
+  margin-bottom: 44px;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.bugs-button {
+  width: 100px;
+  height: 100px;
+  background-color: #81d7bc;
+  border-radius: 15px;
+}
+
+.fish-button {
+  width: 100px;
+  height: 100px;
+  background-color: #88aed0;
+  border-radius: 15px;
+}
+
+.villager-button {
+  width: 307px;
+  background-color: #ea926c;
+  border-radius: 15px;
+  height: 100px;
+  margin-top: 62px;
+}
+
+.sea-button {
+  width: 307px;
+  background-color: #998259;
+  border-radius: 15px;
+  height: 100px;
+  margin-top: 62px;
+}
+
+.square-icon {
+  font-size: 48px;
+}
+
+.buttons-container {
+  width: 307px;
+}
+
+.display-screen {
+  width: 355px;
+  height: 400px;
+  background-color: #fff5d7;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.text-400 {
+  font-weight: 400;
+}
+
+.item-background {
+  background-color: #c4c4c4;
+  height: 80px;
+  width: 80px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.display-holder {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.height-100 {
+  height: 100%;
+}
+
+@media screen and (min-width: 800px) {
+  .container {
+    justify-content: space-around;
+    width: 80%;
+  }
+
+  .buttons-container {
+    width: 50%;
+    margin-top: 50px;
+  }
+
+  .bugs-button {
+    width: 307px;
+    height: 200px;
+    justify-content: space-around;
+  }
+
+  .fish-button {
+    width: 307px;
+    height: 200px;
+    justify-content: space-around;
+  }
+
+  .villager-button {
+    height: 200px;
+    width: 100%;
+  }
+
+  .sea-button {
+    height: 200px;
+    width: 100%;
+  }
+
+  .display-holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .display-screen {
+    width: 500px;
+    height: 600px;
+  }
+
+  .item-background {
+    background-color: #c4c4c4;
+    height: 100px;
+    width: 100px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
