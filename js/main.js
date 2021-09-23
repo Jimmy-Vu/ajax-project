@@ -110,7 +110,7 @@ function dataPull(string) {
       } else {
         imgHolder.setAttribute('src', xhr.response[key].icon_uri);
         imgHolder.setAttribute('name', xhr.response[key]['file-name']);
-        imgHolder.style = 'height: 100%;';
+        imgHolder.className = 'height-100';
         var itemBackground = document.createElement('div');
         itemBackground.className = 'item-background';
         itemBackground.appendChild(imgHolder);

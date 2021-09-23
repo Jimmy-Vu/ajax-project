@@ -154,6 +154,10 @@ a:link {
   flex-direction: column;
 }
 
+.height-100 {
+  height: 100%;
+}
+
 @media screen and (min-width: 800px) {
   .container {
     justify-content: space-around;
