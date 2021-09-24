@@ -2,6 +2,8 @@ var buttonList = document.querySelectorAll('.view-button');
 var browseTitle = document.querySelector('.browse-title');
 var buttonContainer = document.querySelector('.buttons-container');
 var displayHolder = document.querySelector('.display-holder');
+var searchContainer = document.querySelector('.search-container');
+var searchBar = document.querySelector('.search-bar');
 var windowWidth = window.innerWidth;
 
 for (var i = 0; i < buttonList.length; i++) {
@@ -10,10 +12,12 @@ for (var i = 0; i < buttonList.length; i++) {
 
 function buttonNav(event) {
   dataClear();
+  searchContainer.reset();
   switch (event.target.closest('a').getAttribute('data-view')) {
     case 'fish':
       browseTitle.textContent = 'Fishes';
       data.view = 'fish';
+      searchBar.className = 'search-bar active';
       upperLimit = 12;
       lowerLimit = 1;
       dataPull('fish');
@@ -22,6 +26,7 @@ function buttonNav(event) {
     case 'bugs':
       browseTitle.textContent = 'Bugs';
       data.view = 'bugs';
+      searchBar.className = 'search-bar active';
       upperLimit = 12;
       lowerLimit = 1;
       dataPull('bugs');
@@ -30,6 +35,7 @@ function buttonNav(event) {
     case 'villagers':
       browseTitle.textContent = 'Villagers';
       data.view = 'villagers';
+      searchBar.className = 'search-bar active';
       upperLimit = 12;
       lowerLimit = 1;
       dataPull('villagers');
@@ -38,6 +44,7 @@ function buttonNav(event) {
     case 'sea':
       browseTitle.textContent = 'Sea Life';
       data.view = 'sea';
+      searchBar.className = 'search-bar active';
       upperLimit = 12;
       lowerLimit = 1;
       dataPull('sea');
@@ -46,11 +53,53 @@ function buttonNav(event) {
     case 'home':
       browseTitle.textContent = 'Home';
       data.view = 'home';
+      searchBar.className = 'search-bar hidden';
       upperLimit = 12;
       lowerLimit = 1;
       mobileButtonNav(event.target.closest('a').getAttribute('data-view'));
       break;
   }
+}
+
+var searchText = '';
+
+searchContainer.addEventListener('submit', searchBarListener);
+
+function searchBarListener(event) {
+  event.preventDefault();
+  dataClear();
+  searchText = searchBar.value;
+  searchDataPull(data.view);
+}
+
+function searchDataPull(string) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://acnhapi.com/v1/' + string);
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+    var id = 1;
+    var lowerLimit = 1;
+    var upperLimit = 12;
+    for (var key in xhr.response) {
+      if (JSON.stringify(xhr.response[key]['file-name']).includes(searchText)) {
+        var imgHolder = document.createElement('img');
+        if (!(id > upperLimit ||
+          id < lowerLimit)) {
+          imgHolder.setAttribute('id', id);
+          imgHolder.setAttribute('src', xhr.response[key].icon_uri);
+          imgHolder.setAttribute('name', xhr.response[key]['file-name']);
+          imgHolder.className = 'height-100';
+          var itemBackground = document.createElement('div');
+          itemBackground.className = 'item-background';
+          itemBackground.appendChild(imgHolder);
+          gridStart.appendChild(itemBackground);
+          id++;
+        }
+      }
+    }
+  });
+
+  xhr.send();
 }
 
 var gridStart = document.querySelector('.grid');
