@@ -2,8 +2,11 @@ var buttonList = document.querySelectorAll('.view-button');
 var browseTitle = document.querySelector('.browse-title');
 var buttonContainer = document.querySelector('.buttons-container');
 var displayHolder = document.querySelector('.display-holder');
+var displayScreen = document.querySelector('.display-screen');
 var searchContainer = document.querySelector('.search-container');
 var searchBar = document.querySelector('.search-bar');
+var arrowLeftAnchor = document.querySelector('#left-arrow');
+var arrowRightAnchor = document.querySelector('#right-arrow');
 var windowWidth = window.innerWidth;
 
 for (var i = 0; i < buttonList.length; i++) {
@@ -106,12 +109,163 @@ function searchDataPull(string) {
 }
 
 function itemViewListener(event) {
+  var fileName = event.target.getAttribute('fileName');
+  var fileNameResult = '';
+  for (var i = 0; i < fileName.length; i++) {
+    if (i === 0 || (fileName[i - 1] === '_')) {
+      fileNameResult += fileName[i].toUpperCase();
+    } else if (fileName[i] === '_') {
+      fileNameResult += ' ';
+    } else {
+      fileNameResult += fileName[i];
+    }
+  }
+
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://acnhapi.com/v1/' + data.view + '/' + event.target.getAttribute('fileName'));
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
     dataClear();
     searchBar.className = 'search-bar hidden';
+    gridStart.className = '';
+    arrowLeftAnchor.className = 'hidden';
+    arrowRightAnchor.className = 'hidden';
+
+    var itemInfoContainer = document.createElement('div');
+
+    if (data.view === 'villagers') {
+      var villagerTitle = document.createElement('h2');
+      villagerTitle.className = 'item-title';
+      villagerTitle.textContent = event.target.getAttribute('villagerName');
+      itemInfoContainer.appendChild(villagerTitle);
+      displayScreen.className = 'display-screen-item';
+      displayScreen.appendChild(itemInfoContainer);
+
+      var villagerInfoImage = document.createElement('img');
+      villagerInfoImage.setAttribute('src', xhr.response.image_uri);
+      villagerInfoImage.className = 'item-info-image';
+      displayScreen.appendChild(villagerInfoImage);
+
+      var villagerInfoDescription = document.createElement('div');
+
+      var personalityDiv = document.createElement('div');
+      var personality = document.createElement('h4');
+      var personalityText = document.createElement('p');
+      personality.textContent = 'Personality:';
+      personalityText.textContent = xhr.response.personality;
+      personality.className = 'display-inline-block';
+      personalityText.className = 'display-inline-block';
+      personalityDiv.appendChild(personality);
+      personalityDiv.appendChild(personalityText);
+      villagerInfoDescription.appendChild(personalityDiv);
+
+      var speciesDiv = document.createElement('div');
+      var species = document.createElement('h4');
+      var speciesText = document.createElement('p');
+      species.textContent = 'Species:';
+      speciesText.textContent = xhr.response.species;
+      species.className = 'display-inline-block';
+      speciesText.className = 'display-inline-block';
+      speciesDiv.appendChild(species);
+      speciesDiv.appendChild(speciesText);
+      villagerInfoDescription.appendChild(speciesDiv);
+
+      var genderDiv = document.createElement('div');
+      var gender = document.createElement('h4');
+      var genderText = document.createElement('p');
+      gender.textContent = 'Gender:';
+      genderText.textContent = xhr.response.gender;
+      gender.className = 'display-inline-block';
+      genderText.className = 'display-inline-block';
+      genderDiv.appendChild(gender);
+      genderDiv.appendChild(genderText);
+      villagerInfoDescription.appendChild(genderDiv);
+
+      var sayingDiv = document.createElement('div');
+      var saying = document.createElement('h4');
+      var sayingText = document.createElement('p');
+      saying.textContent = 'Saying:';
+      sayingText.textContent = '"' + xhr.response.saying + '"';
+      saying.className = 'display-inline-block';
+      sayingText.className = 'display-inline-block';
+      sayingDiv.appendChild(saying);
+      sayingDiv.appendChild(sayingText);
+      villagerInfoDescription.appendChild(sayingDiv);
+
+      displayScreen.appendChild(villagerInfoDescription);
+    } else {
+      var itemTitle = document.createElement('h2');
+      itemTitle.className = 'item-title';
+      itemTitle.textContent = fileNameResult;
+      itemInfoContainer.appendChild(itemTitle);
+      displayScreen.className = 'display-screen-item';
+      displayScreen.appendChild(itemInfoContainer);
+
+      var itemInfoImage = document.createElement('img');
+      itemInfoImage.setAttribute('src', xhr.response.icon_uri);
+      itemInfoImage.className = 'item-info-image';
+      displayScreen.appendChild(itemInfoImage);
+
+      var itemInfoDescription = document.createElement('div');
+
+      var catchPhraseDiv = document.createElement('div');
+      var catchPhrase = document.createElement('h4');
+      var catchPhraseText = document.createElement('p');
+      catchPhrase.textContent = 'Catch Phrase:';
+      catchPhraseText.textContent = xhr.response['catch-phrase'];
+      catchPhrase.className = 'display-inline-block';
+      catchPhraseText.className = 'display-inline-block';
+      catchPhraseDiv.appendChild(catchPhrase);
+      catchPhraseDiv.appendChild(catchPhraseText);
+      itemInfoDescription.appendChild(catchPhraseDiv);
+
+      var priceDiv = document.createElement('div');
+      var price = document.createElement('h4');
+      var priceText = document.createElement('p');
+      price.textContent = 'Price:  ';
+      priceText.textContent = xhr.response.price;
+      price.className = 'display-inline-block';
+      priceText.className = 'display-inline-block';
+      priceDiv.appendChild(price);
+      priceDiv.appendChild(priceText);
+      itemInfoDescription.appendChild(priceDiv);
+
+      var monthsNorthDiv = document.createElement('div');
+      var monthsNorth = document.createElement('h4');
+      var monthsNorthText = document.createElement('p');
+      monthsNorth.textContent = 'Months Available For Northern Hemisphere:  ';
+      monthsNorthText.textContent = monthsNumToWords(xhr.response.availability['month-northern']);
+      monthsNorth.className = 'display-inline-block';
+      monthsNorthText.className = 'display-inline-block';
+      monthsNorthDiv.appendChild(monthsNorth);
+      monthsNorthDiv.appendChild(monthsNorthText);
+      itemInfoDescription.appendChild(monthsNorthDiv);
+
+      var monthsSouthDiv = document.createElement('div');
+      var monthsSouth = document.createElement('h4');
+      var monthsSouthText = document.createElement('p');
+      monthsSouth.textContent = 'Months Available For Southern Hemisphere:  ';
+      monthsSouthText.textContent = monthsNumToWords(xhr.response.availability['month-southern']);
+      monthsSouth.className = 'display-inline-block';
+      monthsSouthText.className = 'display-inline-block';
+      monthsSouthDiv.appendChild(monthsSouth);
+      monthsSouthDiv.appendChild(monthsSouthText);
+      itemInfoDescription.appendChild(monthsSouthDiv);
+
+      if (xhr.response.availability.time !== '') {
+        var timeDiv = document.createElement('div');
+        var time = document.createElement('h4');
+        var timeText = document.createElement('p');
+        time.textContent = 'Time Available:  ';
+        timeText.textContent = xhr.response.availability.time;
+        time.className = 'display-inline-block';
+        timeText.className = 'display-inline-block';
+        timeDiv.appendChild(time);
+        timeDiv.appendChild(timeText);
+        itemInfoDescription.appendChild(timeDiv);
+      }
+      displayScreen.appendChild(itemInfoDescription);
+    }
   });
   xhr.send();
 }
@@ -172,7 +326,11 @@ function dataPull(string) {
         continue;
       } else {
         imgHolder.setAttribute('src', xhr.response[key].icon_uri);
+        if (data.view === 'villagers') {
+          imgHolder.setAttribute('villagerName', xhr.response[key].name['name-USen']);
+        }
         imgHolder.setAttribute('fileName', xhr.response[key]['file-name']);
+
         imgHolder.className = 'height-100';
         var itemBackground = document.createElement('div');
         itemBackground.setAttribute('fileName', xhr.response[key]['file-name']);
@@ -193,6 +351,30 @@ function dataClear() {
   for (var i = 0; i < backgroundList.length; i++) {
     backgroundList[i].parentNode.removeChild(backgroundList[i]);
   }
+}
+
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+  'August', 'September', 'October', 'November', 'December'];
+
+function monthsNumToWords(string) {
+  var newString = '';
+  var storedString = '';
+  for (var i = 0; i <= string.length; i++) {
+    if (string[i] !== '-') {
+      storedString += string[i];
+    }
+    if (string[i] === '-' || i === string.length) {
+      newString += months[parseInt(storedString, 10) - 1];
+      storedString = '';
+      if (string[i] === '-') {
+        newString += ' to ';
+      }
+      if (string[i] === '&') {
+        newString += ' and ';
+      }
+    }
+  }
+  return newString;
 }
 
 window.addEventListener('resize', function () { windowWidth = window.innerWidth; });

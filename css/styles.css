@@ -188,6 +188,38 @@ a:link {
   margin-top: 40px;
 }
 
+.display-screen-item {
+  width: 355px;
+  height: 400px;
+  background-color: #fff5d7;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item-title {
+  color: white;
+  background-color: #642422;
+  border-radius: 15px;
+  padding: 5px 8px;
+  margin-top: 35px;
+}
+
+.item-info-image {
+  width: 150px;
+  max-height: 200px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  border-radius: 15px;
+}
+
+.display-inline-block {
+  display: inline;
+  line-height: 2.5rem;
+  margin-right: 0.3rem;
+}
+
 @media screen and (min-width: 800px) {
   .container {
     justify-content: space-around;
@@ -229,6 +261,11 @@ a:link {
   }
 
   .display-screen {
+    width: 500px;
+    height: 600px;
+  }
+
+  .display-screen-item {
     width: 500px;
     height: 600px;
   }
