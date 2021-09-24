@@ -2,8 +2,11 @@ var buttonList = document.querySelectorAll('.view-button');
 var browseTitle = document.querySelector('.browse-title');
 var buttonContainer = document.querySelector('.buttons-container');
 var displayHolder = document.querySelector('.display-holder');
+var displayScreen = document.querySelector('.display-screen');
 var searchContainer = document.querySelector('.search-container');
 var searchBar = document.querySelector('.search-bar');
+var arrowLeftAnchor = document.querySelector('#left-arrow');
+var arrowRightAnchor = document.querySelector('#right-arrow');
 var windowWidth = window.innerWidth;
 
 for (var i = 0; i < buttonList.length; i++) {
@@ -106,12 +109,88 @@ function searchDataPull(string) {
 }
 
 function itemViewListener(event) {
+  var fileName = event.target.getAttribute('fileName');
+  var fileNameResult = '';
+  for (var i = 0; i < fileName.length; i++) {
+    if (i === 0 || (fileName[i - 1] === '_')) {
+      fileNameResult += fileName[i].toUpperCase();
+    } else if (fileName[i] === '_') {
+      fileNameResult += ' ';
+    } else {
+      fileNameResult += fileName[i];
+    }
+  }
+
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://acnhapi.com/v1/' + data.view + '/' + event.target.getAttribute('fileName'));
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
     dataClear();
     searchBar.className = 'search-bar hidden';
+    gridStart.className = '';
+    arrowLeftAnchor.className = 'hidden';
+    arrowRightAnchor.className = 'hidden';
+
+    var itemInfoContainer = document.createElement('div');
+    var itemTitle = document.createElement('h2');
+    itemTitle.className = 'item-title';
+    itemTitle.textContent = fileNameResult;
+    itemInfoContainer.appendChild(itemTitle);
+    displayScreen.className = 'display-screen-item';
+    displayScreen.appendChild(itemInfoContainer);
+
+    var itemInfoImage = document.createElement('img');
+    itemInfoImage.setAttribute('src', xhr.response.icon_uri);
+    itemInfoImage.className = 'item-info-image';
+    displayScreen.appendChild(itemInfoImage);
+
+    var itemInfoDescription = document.createElement('div');
+
+    var catchPhraseDiv = document.createElement('div');
+    var catchPhrase = document.createElement('h4');
+    var catchPhraseText = document.createElement('p');
+    catchPhrase.textContent = 'Catch Phrase:';
+    catchPhraseText.textContent = xhr.response['catch-phrase'];
+    catchPhrase.className = 'display-inline-block';
+    catchPhraseText.className = 'display-inline-block';
+    catchPhraseDiv.appendChild(catchPhrase);
+    catchPhraseDiv.appendChild(catchPhraseText);
+    itemInfoDescription.appendChild(catchPhraseDiv);
+
+    var priceDiv = document.createElement('div');
+    var price = document.createElement('h4');
+    var priceText = document.createElement('p');
+    price.textContent = 'Price:  ';
+    priceText.textContent = xhr.response.price;
+    price.className = 'display-inline-block';
+    priceText.className = 'display-inline-block';
+    priceDiv.appendChild(price);
+    priceDiv.appendChild(priceText);
+    itemInfoDescription.appendChild(priceDiv);
+
+    var monthsNorthDiv = document.createElement('div');
+    var monthsNorth = document.createElement('h4');
+    var monthsNorthText = document.createElement('p');
+    monthsNorth.textContent = 'Months Available For Northern Hemisphere:  ';
+    monthsNorthText.textContent = monthsNumToWords(xhr.response.availability['month-northern']);
+    monthsNorth.className = 'display-inline-block';
+    monthsNorthText.className = 'display-inline-block';
+    monthsNorthDiv.appendChild(monthsNorth);
+    monthsNorthDiv.appendChild(monthsNorthText);
+    itemInfoDescription.appendChild(monthsNorthDiv);
+
+    var monthsSouthDiv = document.createElement('div');
+    var monthsSouth = document.createElement('h4');
+    var monthsSouthText = document.createElement('p');
+    monthsSouth.textContent = 'Months Available For Southern Hemisphere:  ';
+    monthsSouthText.textContent = monthsNumToWords(xhr.response.availability['month-southern']);
+    monthsSouth.className = 'display-inline-block';
+    monthsSouthText.className = 'display-inline-block';
+    monthsSouthDiv.appendChild(monthsSouth);
+    monthsSouthDiv.appendChild(monthsSouthText);
+    itemInfoDescription.appendChild(monthsSouthDiv);
+
+    displayScreen.appendChild(itemInfoDescription);
   });
   xhr.send();
 }
@@ -193,6 +272,27 @@ function dataClear() {
   for (var i = 0; i < backgroundList.length; i++) {
     backgroundList[i].parentNode.removeChild(backgroundList[i]);
   }
+}
+
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+  'August', 'September', 'October', 'November', 'December'];
+
+function monthsNumToWords(string) {
+  var newString = '';
+  var storedString = '';
+  for (var i = 0; i <= string.length; i++) {
+    if (string[i] !== '-') {
+      storedString += string[i];
+    }
+    if (string[i] === '-' || i === string.length) {
+      newString += months[parseInt(storedString, 10) - 1];
+      storedString = '';
+      if (string[i] === '-') {
+        newString += ' to ';
+      }
+    }
+  }
+  return newString;
 }
 
 window.addEventListener('resize', function () { windowWidth = window.innerWidth; });
