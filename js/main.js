@@ -87,18 +87,32 @@ function searchDataPull(string) {
           id < lowerLimit)) {
           imgHolder.setAttribute('id', id);
           imgHolder.setAttribute('src', xhr.response[key].icon_uri);
-          imgHolder.setAttribute('name', xhr.response[key]['file-name']);
+          imgHolder.setAttribute('fileName', xhr.response[key]['file-name']);
           imgHolder.className = 'height-100';
           var itemBackground = document.createElement('div');
+          itemBackground.setAttribute('fileName', xhr.response[key]['file-name']);
           itemBackground.className = 'item-background';
           itemBackground.appendChild(imgHolder);
           gridStart.appendChild(itemBackground);
+
+          itemBackground.addEventListener('click', itemViewListener);
           id++;
         }
       }
     }
   });
 
+  xhr.send();
+}
+
+function itemViewListener(event) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://acnhapi.com/v1/' + data.view + '/' + event.target.getAttribute('fileName'));
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+    dataClear();
+    searchBar.className = 'search-bar hidden';
+  });
   xhr.send();
 }
 
@@ -158,12 +172,15 @@ function dataPull(string) {
         continue;
       } else {
         imgHolder.setAttribute('src', xhr.response[key].icon_uri);
-        imgHolder.setAttribute('name', xhr.response[key]['file-name']);
+        imgHolder.setAttribute('fileName', xhr.response[key]['file-name']);
         imgHolder.className = 'height-100';
         var itemBackground = document.createElement('div');
+        itemBackground.setAttribute('fileName', xhr.response[key]['file-name']);
         itemBackground.className = 'item-background';
         itemBackground.appendChild(imgHolder);
         gridStart.appendChild(itemBackground);
+
+        itemBackground.addEventListener('click', itemViewListener);
       }
     }
   });
