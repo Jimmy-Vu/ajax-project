@@ -81,7 +81,7 @@ function searchDataPull(string) {
     var lowerLimit = 1;
     var upperLimit = 12;
     for (var key in xhr.response) {
-      if (JSON.stringify(xhr.response[key]['file-name']).includes(searchText)) {
+      if (xhr.response[key]['file-name'].includes(searchText)) {
         var imgHolder = document.createElement('img');
         if (!(id > upperLimit ||
           id < lowerLimit)) {
