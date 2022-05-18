@@ -18,6 +18,14 @@
   width: 50%;
 }
 
+.selection-button {
+  max-width: 45%;
+}
+
+.bottom-buttons-layout .selection-button {
+  max-width: 100%;
+}
+
 .grid {
   display: grid;
   grid-gap: 5px;
@@ -38,13 +46,12 @@
   }
 
   .bottom-buttons-layout {
-    display: flex;
     flex-direction: row;
-    justify-content: space-between;
   }
 
-  .col-half {
-    max-width: 307px;
+  .bottom-buttons-layout .selection-button {
+    width: 307px;
+    max-width: 45%;
   }
 
   .grid {

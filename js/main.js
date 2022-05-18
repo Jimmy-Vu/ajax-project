@@ -332,7 +332,7 @@ function dataPull(string) {
         imgHolder.setAttribute('fileName', xhr.response[key]['file-name']);
 
         imgHolder.className = 'height-100';
-        var itemBackground = document.createElement('div');
+        var itemBackground = document.createElement('a');
         itemBackground.setAttribute('fileName', xhr.response[key]['file-name']);
         itemBackground.className = 'item-background';
         itemBackground.appendChild(imgHolder);
