@@ -21,6 +21,11 @@ a:link {
   color: inherit;
 }
 
+@font-face {
+  font-family: "FinkHeavy";
+  src: url("./font/FinkHeavy.woff");
+}
+
 .container {
   margin-left: 54px;
   margin-right: 54px;
@@ -63,7 +68,8 @@ a:link {
 
 .site-title {
   margin-left: 5px;
-  font-size: 30px;
+  font-size: 32px;
+  font-family: "FinkHeavy", sans-serif;
 }
 
 .welcome-message {
@@ -107,7 +113,6 @@ a:link {
 }
 
 .villager-button {
-  width: 307px;
   background-color: #ea926c;
   border-radius: 15px;
   height: 100px;
@@ -115,7 +120,6 @@ a:link {
 }
 
 .sea-button {
-  width: 307px;
   background-color: #998259;
   border-radius: 15px;
   height: 100px;
@@ -229,6 +233,11 @@ a:link {
   .buttons-container {
     width: 50%;
     margin-top: 50px;
+    margin-right: 2em;
+  }
+
+  .selection-button {
+    padding: 0.5em;
   }
 
   .bugs-button {
@@ -245,12 +254,10 @@ a:link {
 
   .villager-button {
     height: 200px;
-    width: 100%;
   }
 
   .sea-button {
     height: 200px;
-    width: 100%;
   }
 
   .display-holder {
@@ -279,5 +286,11 @@ a:link {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .selection-button {
+    font-size: 1.25em;
   }
 }

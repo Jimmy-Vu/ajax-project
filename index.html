@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,9 +12,11 @@
   <script src="https://kit.fontawesome.com/0a6f86bdfb.js" crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap"
     rel="stylesheet">
 </head>
+
 <body>
   <header>
     <div class="top-bar">
@@ -29,46 +32,43 @@
         <div class="row justify-center">
           <h1 class="welcome-message">Welcome, neighbor.</h1>
         </div>
-        <div class="row justify-between top-buttons-layout">
-          <a data-view="bugs" href="#" class="view-button bugs-button row justify-center align-center">
+        <div class="row justify-between">
+          <a data-view="bugs" href="#" class="view-button bugs-button selection-button row justify-center align-center">
             <i class="fas fa-bug square-icon"></i>
             <h2 class="nonactive">Bugs</h2>
           </a>
-          <a data-view="fish" href="#" class="view-button fish-button row justify-center align-center">
+          <a data-view="fish" href="#" class="view-button fish-button selection-button row justify-center align-center">
             <i class="fas fa-fish square-icon"></i>
             <h2 class="nonactive">Fishes</h2>
           </a>
         </div>
-          <div class="bottom-buttons-layout">
-            <div class="col-half">
-            <a data-view="villagers" href="#" class="view-button villager-button row justify-around align-center">
+        <div class="row justify-between bottom-buttons-layout">
+            <a data-view="villagers" href="#" class="view-button villager-button selection-button row justify-around align-center">
               <i class="fas fa-paw square-icon"></i>
               <h2>Villagers</h2>
             </a>
-            </div>
-            <div class ="col-half">
-              <a data-view="sea" href="#" class="view-button sea-button row justify-around align-center">
-                <i class="fas fa-star square-icon"></i>
-                <h2>Sea Life</h2>
-              </a>
-            </div>
-          </div>
+            <a data-view="sea" href="#" class="view-button sea-button selection-button row justify-around align-center">
+              <i class="fas fa-star square-icon"></i>
+              <h2>Sea Life</h2>
+            </a>
         </div>
-        <div class="display-holder column hidden">
-          <h1 data-view="bugs" class="text-400 browse-title text-center">Home</h1>
-          <div class="display-screen">
-            <form class="search-container">
-              <input type="text" class="search-bar" placeholder="Search...">
-            </form>
-            <a href="#" id="left-arrow"><i class="arrow-button fas fa-angle-double-left"></i></a>
-            <div class="grid">
-            </div>
-            <a href="#" id="right-arrow"><i class="arrow-button fas fa-angle-double-right"></i></a>
+      </div>
+      <div class="display-holder column hidden">
+        <h1 data-view="bugs" class="text-400 browse-title text-center">Home</h1>
+        <div class="display-screen">
+          <form class="search-container">
+            <input type="text" class="search-bar" placeholder="Search...">
+          </form>
+          <a href="#" id="left-arrow"><i class="arrow-button fas fa-angle-double-left"></i></a>
+          <div class="grid">
           </div>
+          <a href="#" id="right-arrow"><i class="arrow-button fas fa-angle-double-right"></i></a>
         </div>
+      </div>
     </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
+
 </html>
