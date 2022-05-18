@@ -3,6 +3,8 @@ var browseTitle = document.querySelector('.browse-title');
 var buttonContainer = document.querySelector('.buttons-container');
 var displayHolder = document.querySelector('.display-holder');
 var displayScreen = document.querySelector('.display-screen');
+var homeMessage = document.querySelector('.home-message');
+var mainContent = document.querySelector('.main-content');
 var searchContainer = document.querySelector('.search-container');
 var searchBar = document.querySelector('.search-bar');
 var arrowLeftAnchor = document.querySelector('#left-arrow');
@@ -14,49 +16,84 @@ for (var i = 0; i < buttonList.length; i++) {
 }
 
 function buttonNav(event) {
+  var itemContainer = document.querySelector('.display-screen-item');
   dataClear();
   searchContainer.reset();
   switch (event.target.closest('a').getAttribute('data-view')) {
     case 'fish':
+      homeMessage.className = 'hidden';
+      mainContent.className = 'row align-center main-content';
       browseTitle.textContent = 'Fishes';
       data.view = 'fish';
-      searchBar.className = 'search-bar active';
+      searchContainer.className = 'search-container';
+      if (itemContainer !== null) {
+        itemContainer.remove();
+        arrowLeftAnchor.className = 'active';
+        arrowRightAnchor.className = 'active';
+        gridStart.className = 'grid';
+      }
       upperLimit = 12;
       lowerLimit = 1;
       dataPull('fish');
       mobileButtonNav(event.target.closest('a').getAttribute('data-view'));
       break;
     case 'bugs':
+      homeMessage.className = 'hidden';
+      mainContent.className = 'row align-center main-content';
       browseTitle.textContent = 'Bugs';
       data.view = 'bugs';
-      searchBar.className = 'search-bar active';
+      searchContainer.className = 'search-container';
+      if (itemContainer !== null) {
+        itemContainer.remove();
+        arrowLeftAnchor.className = 'active';
+        arrowRightAnchor.className = 'active';
+        gridStart.className = 'grid';
+      }
       upperLimit = 12;
       lowerLimit = 1;
       dataPull('bugs');
       mobileButtonNav(event.target.closest('a').getAttribute('data-view'));
       break;
     case 'villagers':
+      homeMessage.className = 'hidden';
+      mainContent.className = 'row align-center main-content';
       browseTitle.textContent = 'Villagers';
       data.view = 'villagers';
-      searchBar.className = 'search-bar active';
+      searchContainer.className = 'search-container';
+      if (itemContainer !== null) {
+        itemContainer.remove();
+        arrowLeftAnchor.className = 'active';
+        arrowRightAnchor.className = 'active';
+        gridStart.className = 'grid';
+      }
       upperLimit = 12;
       lowerLimit = 1;
       dataPull('villagers');
       mobileButtonNav(event.target.closest('a').getAttribute('data-view'));
       break;
     case 'sea':
+      homeMessage.className = 'hidden';
+      mainContent.className = 'row align-center main-content';
       browseTitle.textContent = 'Sea Life';
       data.view = 'sea';
-      searchBar.className = 'search-bar active';
+      searchContainer.className = 'search-container';
+      if (itemContainer !== null) {
+        itemContainer.remove();
+        arrowLeftAnchor.className = 'active';
+        arrowRightAnchor.className = 'active';
+        gridStart.className = 'grid';
+      }
       upperLimit = 12;
       lowerLimit = 1;
       dataPull('sea');
       mobileButtonNav(event.target.closest('a').getAttribute('data-view'));
       break;
     case 'home':
+      homeMessage.className = 'home-message';
+      mainContent.className = 'row align-center main-content hidden';
       browseTitle.textContent = 'Home';
       data.view = 'home';
-      searchBar.className = 'search-bar hidden';
+      searchContainer.className = 'search-container hidden';
       upperLimit = 12;
       lowerLimit = 1;
       mobileButtonNav(event.target.closest('a').getAttribute('data-view'));
@@ -126,25 +163,26 @@ function itemViewListener(event) {
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
     dataClear();
-    searchBar.className = 'search-bar hidden';
+    searchContainer.className = 'search-bar hidden';
     gridStart.className = '';
     arrowLeftAnchor.className = 'hidden';
     arrowRightAnchor.className = 'hidden';
 
     var itemInfoContainer = document.createElement('div');
+    var itemContainer = document.createElement('div');
 
     if (data.view === 'villagers') {
       var villagerTitle = document.createElement('h2');
       villagerTitle.className = 'item-title';
       villagerTitle.textContent = event.target.getAttribute('villagerName');
       itemInfoContainer.appendChild(villagerTitle);
-      displayScreen.className = 'display-screen-item';
-      displayScreen.appendChild(itemInfoContainer);
+      itemContainer.className = 'display-screen-item';
+      itemContainer.appendChild(itemInfoContainer);
 
       var villagerInfoImage = document.createElement('img');
       villagerInfoImage.setAttribute('src', xhr.response.image_uri);
       villagerInfoImage.className = 'item-info-image';
-      displayScreen.appendChild(villagerInfoImage);
+      itemContainer.appendChild(villagerInfoImage);
 
       var villagerInfoDescription = document.createElement('div');
 
@@ -192,19 +230,20 @@ function itemViewListener(event) {
       sayingDiv.appendChild(sayingText);
       villagerInfoDescription.appendChild(sayingDiv);
 
-      displayScreen.appendChild(villagerInfoDescription);
+      itemContainer.appendChild(villagerInfoDescription);
+      displayScreen.appendChild(itemContainer);
     } else {
       var itemTitle = document.createElement('h2');
       itemTitle.className = 'item-title';
       itemTitle.textContent = fileNameResult;
       itemInfoContainer.appendChild(itemTitle);
-      displayScreen.className = 'display-screen-item';
-      displayScreen.appendChild(itemInfoContainer);
+      itemContainer.className = 'display-screen-item';
+      itemContainer.appendChild(itemInfoContainer);
 
       var itemInfoImage = document.createElement('img');
       itemInfoImage.setAttribute('src', xhr.response.icon_uri);
       itemInfoImage.className = 'item-info-image';
-      displayScreen.appendChild(itemInfoImage);
+      itemContainer.appendChild(itemInfoImage);
 
       var itemInfoDescription = document.createElement('div');
 
@@ -264,7 +303,8 @@ function itemViewListener(event) {
         timeDiv.appendChild(timeText);
         itemInfoDescription.appendChild(timeDiv);
       }
-      displayScreen.appendChild(itemInfoDescription);
+      itemContainer.appendChild(itemInfoDescription);
+      displayScreen.appendChild(itemContainer);
     }
   });
   xhr.send();

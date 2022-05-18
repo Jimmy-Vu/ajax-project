@@ -20,8 +20,8 @@
 <body>
   <header>
     <div class="top-bar">
-      <div class="logo">
-        <a data-view="home" href="#" class="home view-button"><i class="fas fa-leaf"></i></a>
+      <div class="logo view-button">
+        <a data-view="home" href="#" class="home"><i class="fas fa-leaf"></i></a>
       </div>
       <h1 class="site-title">New Horizon Hub</h1>
     </div>
@@ -45,24 +45,30 @@
         <div class="row justify-between bottom-buttons-layout">
             <a data-view="villagers" href="#" class="view-button villager-button selection-button row justify-around align-center">
               <i class="fas fa-paw square-icon"></i>
-              <h2>Villagers</h2>
+              <h2 class="nonactive">Villagers</h2>
             </a>
             <a data-view="sea" href="#" class="view-button sea-button selection-button row justify-around align-center">
               <i class="fas fa-star square-icon"></i>
-              <h2>Sea Life</h2>
+              <h2 class="nonactive">Sea Life</h2>
             </a>
         </div>
       </div>
-      <div class="display-holder column hidden">
+      <div class="display-holder flex-column hidden">
         <h1 data-view="bugs" class="text-400 browse-title text-center">Home</h1>
-        <div class="display-screen">
-          <form class="search-container">
+        <div class="display-screen flex-column">
+          <div class="home-message">
+            <i class="fa-solid fa-plane-departure"></i>
+            <h3>To New Beginnings!</h3>
+          </div>
+          <form class="search-container hidden">
             <input type="text" class="search-bar" placeholder="Search...">
           </form>
-          <a href="#" id="left-arrow"><i class="arrow-button fas fa-angle-double-left"></i></a>
-          <div class="grid">
+          <div class="row align-center main-content hidden">
+            <a href="#" id="left-arrow"><i class="arrow-button fas fa-angle-double-left"></i></a>
+            <div class="grid">
+            </div>
+            <a href="#" id="right-arrow"><i class="arrow-button fas fa-angle-double-right"></i></a>
           </div>
-          <a href="#" id="right-arrow"><i class="arrow-button fas fa-angle-double-right"></i></a>
         </div>
       </div>
     </div>

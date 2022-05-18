@@ -1,3 +1,7 @@
+html {
+  height: 100vh;
+}
+
 main {
   display: flex;
   justify-content: center;
@@ -136,11 +140,10 @@ a:link {
 
 .display-screen {
   width: 355px;
-  height: 400px;
+  height: 450px;
   background-color: #fff5d7;
   border-radius: 15px;
   display: flex;
-  justify-content: center;
   align-items: center;
   position: relative;
 }
@@ -170,8 +173,7 @@ a:link {
 }
 
 .search-container {
-  position: absolute;
-  top: 15px;
+  margin-top: 2em;
 }
 
 .search-bar {
@@ -189,7 +191,7 @@ a:link {
 }
 
 .grid {
-  margin-top: 40px;
+  margin-top: 1em;
 }
 
 .display-screen-item {
@@ -224,15 +226,24 @@ a:link {
   margin-right: 0.3rem;
 }
 
+.home-message {
+  font-size: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 @media screen and (min-width: 800px) {
   .container {
-    justify-content: space-around;
+    justify-content: center;
     width: 80%;
+    margin-top: 2em;
   }
 
   .buttons-container {
     width: 50%;
-    margin-top: 50px;
+
+    /* margin-top: 50px; */
     margin-right: 2em;
   }
 
@@ -264,12 +275,13 @@ a:link {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
   }
 
   .display-screen {
     width: 500px;
     height: 600px;
+    justify-content: center;
+    box-shadow: 0 0 2px black;
   }
 
   .display-screen-item {
