@@ -273,7 +273,7 @@ function itemViewListener(event) {
       var monthsNorth = document.createElement('h4');
       var monthsNorthText = document.createElement('p');
       monthsNorth.textContent = 'Months Available For Northern Hemisphere:  ';
-      monthsNorthText.textContent = monthsNumToWords(xhr.response.availability['month-northern']);
+      monthsNorthText.textContent = monthsNumToWords(xhr.response.availability['month-array-northern']);
       monthsNorth.className = 'display-inline-block';
       monthsNorthText.className = 'display-inline-block';
       monthsNorthDiv.appendChild(monthsNorth);
@@ -284,7 +284,7 @@ function itemViewListener(event) {
       var monthsSouth = document.createElement('h4');
       var monthsSouthText = document.createElement('p');
       monthsSouth.textContent = 'Months Available For Southern Hemisphere:  ';
-      monthsSouthText.textContent = monthsNumToWords(xhr.response.availability['month-southern']);
+      monthsSouthText.textContent = monthsNumToWords(xhr.response.availability['month-array-southern']);
       monthsSouth.className = 'display-inline-block';
       monthsSouthText.className = 'display-inline-block';
       monthsSouthDiv.appendChild(monthsSouth);
