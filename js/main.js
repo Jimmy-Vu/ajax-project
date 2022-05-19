@@ -120,11 +120,13 @@ function searchDataPull(string) {
     var id = 1;
     var lowerLimit = 1;
     var upperLimit = 12;
+    let searchTextAdjusted = '';
     for (var key in xhr.response) {
       var imgHolder = document.createElement('img');
       var itemBackground = document.createElement('div');
       if (!(string === 'villagers')) {
-        if (xhr.response[key]['file-name'].includes(searchText)) {
+        searchTextAdjusted = searchTextAdjusted.toLowerCase();
+        if (xhr.response[key]['file-name'].includes(searchTextAdjusted)) {
           if (!(id > upperLimit ||
           id < lowerLimit)) {
             imgHolder.setAttribute('id', id);
@@ -140,9 +142,8 @@ function searchDataPull(string) {
           }
         }
       } else {
-        const searchTextCapitalized = searchText[0].toUpperCase() + searchText.slice(1).toLowerCase();
-
-        if (xhr.response[key].name['name-USen'].includes(searchTextCapitalized)) {
+        searchTextAdjusted = searchText[0].toUpperCase() + searchText.slice(1).toLowerCase();
+        if (xhr.response[key].name['name-USen'].includes(searchTextAdjusted)) {
           if (!(id > upperLimit ||
             id < lowerLimit)) {
             imgHolder.setAttribute('id', id);
