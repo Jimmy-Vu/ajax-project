@@ -125,7 +125,7 @@ function searchDataPull(string) {
       var imgHolder = document.createElement('img');
       var itemBackground = document.createElement('div');
       if (!(string === 'villagers')) {
-        searchTextAdjusted = searchTextAdjusted.toLowerCase();
+        searchTextAdjusted = searchText.toLowerCase();
         if (xhr.response[key]['file-name'].includes(searchTextAdjusted)) {
           if (!(id > upperLimit ||
           id < lowerLimit)) {
