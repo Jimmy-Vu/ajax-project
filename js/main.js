@@ -123,7 +123,7 @@ function searchDataPull(string) {
     for (var key in xhr.response) {
       var imgHolder = document.createElement('img');
       var itemBackground = document.createElement('div');
-      if (!string === 'villagers') {
+      if (!(string === 'villagers')) {
         if (xhr.response[key]['file-name'].includes(searchText)) {
           if (!(id > upperLimit ||
           id < lowerLimit)) {
@@ -135,7 +135,6 @@ function searchDataPull(string) {
             itemBackground.className = 'item-background';
             itemBackground.appendChild(imgHolder);
             gridStart.appendChild(itemBackground);
-
             itemBackground.addEventListener('click', itemViewListener);
             id++;
           }
