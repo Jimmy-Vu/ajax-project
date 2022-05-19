@@ -278,6 +278,7 @@ a:link {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 3em;
   }
 
   .display-screen {
