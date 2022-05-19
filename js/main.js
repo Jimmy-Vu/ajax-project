@@ -246,12 +246,13 @@ function itemViewListener(event) {
       itemContainer.appendChild(itemInfoImage);
 
       var itemInfoDescription = document.createElement('div');
+      itemInfoDescription.className = 'item-description';
 
       var catchPhraseDiv = document.createElement('div');
       var catchPhrase = document.createElement('h4');
       var catchPhraseText = document.createElement('p');
       catchPhrase.textContent = 'Catch Phrase:';
-      catchPhraseText.textContent = xhr.response['catch-phrase'];
+      catchPhraseText.textContent = '"' + xhr.response['catch-phrase'] + '"';
       catchPhrase.className = 'display-inline-block';
       catchPhraseText.className = 'display-inline-block';
       catchPhraseDiv.appendChild(catchPhrase);
@@ -396,24 +397,9 @@ function dataClear() {
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
   'August', 'September', 'October', 'November', 'December'];
 
-function monthsNumToWords(string) {
+function monthsNumToWords(array) {
   var newString = '';
-  var storedString = '';
-  for (var i = 0; i <= string.length; i++) {
-    if (string[i] !== '-') {
-      storedString += string[i];
-    }
-    if (string[i] === '-' || i === string.length) {
-      newString += months[parseInt(storedString, 10) - 1];
-      storedString = '';
-      if (string[i] === '-') {
-        newString += ' to ';
-      }
-      if (string[i] === '&') {
-        newString += ' and ';
-      }
-    }
-  }
+  newString += months[array[0] - 1] + ' to ' + months[array[array.length - 1] - 1];
   return newString;
 }
 
