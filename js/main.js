@@ -121,22 +121,44 @@ function searchDataPull(string) {
     var lowerLimit = 1;
     var upperLimit = 12;
     for (var key in xhr.response) {
-      if (xhr.response[key]['file-name'].includes(searchText)) {
-        var imgHolder = document.createElement('img');
-        if (!(id > upperLimit ||
+      var imgHolder = document.createElement('img');
+      var itemBackground = document.createElement('div');
+      if (!string === 'villagers') {
+        if (xhr.response[key]['file-name'].includes(searchText)) {
+          if (!(id > upperLimit ||
           id < lowerLimit)) {
-          imgHolder.setAttribute('id', id);
-          imgHolder.setAttribute('src', xhr.response[key].icon_uri);
-          imgHolder.setAttribute('fileName', xhr.response[key]['file-name']);
-          imgHolder.className = 'height-100';
-          var itemBackground = document.createElement('div');
-          itemBackground.setAttribute('fileName', xhr.response[key]['file-name']);
-          itemBackground.className = 'item-background';
-          itemBackground.appendChild(imgHolder);
-          gridStart.appendChild(itemBackground);
+            imgHolder.setAttribute('id', id);
+            imgHolder.setAttribute('src', xhr.response[key].icon_uri);
+            imgHolder.setAttribute('fileName', xhr.response[key]['file-name']);
+            imgHolder.className = 'height-100';
+            itemBackground.setAttribute('fileName', xhr.response[key]['file-name']);
+            itemBackground.className = 'item-background';
+            itemBackground.appendChild(imgHolder);
+            gridStart.appendChild(itemBackground);
 
-          itemBackground.addEventListener('click', itemViewListener);
-          id++;
+            itemBackground.addEventListener('click', itemViewListener);
+            id++;
+          }
+        }
+      } else {
+        const searchTextCapitalized = searchText[0].toUpperCase() + searchText.slice(1).toLowerCase();
+
+        if (xhr.response[key].name['name-USen'].includes(searchTextCapitalized)) {
+          if (!(id > upperLimit ||
+            id < lowerLimit)) {
+            imgHolder.setAttribute('id', id);
+            imgHolder.setAttribute('src', xhr.response[key].icon_uri);
+            imgHolder.setAttribute('villagerName', xhr.response[key].name['name-USen']);
+            imgHolder.setAttribute('fileName', xhr.response[key]['file-name']);
+            imgHolder.className = 'height-100';
+            itemBackground.setAttribute('fileName', xhr.response[key]['file-name']);
+            itemBackground.className = 'item-background';
+            itemBackground.appendChild(imgHolder);
+            gridStart.appendChild(itemBackground);
+
+            itemBackground.addEventListener('click', itemViewListener);
+            id++;
+          }
         }
       }
     }
