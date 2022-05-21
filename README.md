@@ -5,7 +5,7 @@ A dynamic HTML, CSS, and JavaScript solo web application for Animal Crossing: Ne
 All data is pulled from the [ACNH API](http://acnhapi.com/) which was created by [Alexis Lours](https://github.com/alexislours). Many thanks to Alexis for their wonderful creation and hard work. 
 
 #### Live Demo
-Try the application live at [jimmy-vu.github.io/new-horizon-hub/](jimmy-vu.github.io/new-horizon-hub/)
+Try the live application [here!](jimmy-vu.github.io/new-horizon-hub/)
 
 
 #### Technologies Used
