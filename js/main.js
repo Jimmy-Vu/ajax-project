@@ -114,7 +114,7 @@ function searchBarListener(event) {
 
 function searchDataPull(string) {
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'http://acnhapi.com/v1/' + string);
+  xhr.open('GET', 'https://acnhapi.com/v1/' + string);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
     var id = 1;
@@ -181,7 +181,7 @@ function itemViewListener(event) {
   }
 
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'http://acnhapi.com/v1/' + data.view + '/' + event.target.getAttribute('fileName'));
+  xhr.open('GET', 'https://acnhapi.com/v1/' + data.view + '/' + event.target.getAttribute('fileName'));
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
     dataClear();
@@ -378,7 +378,7 @@ function arrowButtonClick(event) {
 
 function dataPull(string) {
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'http://acnhapi.com/v1/' + string);
+  xhr.open('GET', 'https://acnhapi.com/v1/' + string);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
     for (var key in xhr.response) {
