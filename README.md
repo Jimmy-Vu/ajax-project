@@ -5,7 +5,7 @@
 <h3 align="center">New Horizon Hub</h3>
 
   <p align="center">
-    A dynamic HTML, CSS, and JavaScript web application for Animal Crossing: New Horizon fans to browse through in game collectibles pulled from the <a href="http://acnhapi.com">ACNH API</a>.
+    A dynamic HTML, CSS, and JavaScript web application for Animal Crossing: New Horizon fans to browse through in game collectibles with the help of the <a href="http://acnhapi.com">ACNH API</a>.
     <br />
     <br />
     <a href="https://jimmy-vu.github.io/new-horizon-hub/">View Live Demo</a>
