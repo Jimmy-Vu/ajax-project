@@ -1,17 +1,25 @@
-# New Horizon Hub
+[![Issues][issues-shield]][issues-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
+[![Twitter][twitter-shield]][twitter-url]
+
+<h3 align="center">New Horizon Hub</h3>
+
+  <p align="center">
+    A dynamic HTML, CSS, and JavaScript web application for Animal Crossing: New Horizon fans to browse through in game collectibles pulled from the <a href="http://acnhapi.com">ACNH API</a>.
+    <br />
+    <br />
+    <a href="https://jimmy-vu.github.io/new-horizon-hub/">View Live Demo</a>
+    ·
+    <a href="https://github.com/Jimmy-Vu/new-horizon-hub/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/Jimmy-Vu/new-horizon-hub/issues">Make A Suggestion</a>
+  </p>
+</div>
 
 <p align="center">
   <img width="800" src="https://user-images.githubusercontent.com/88172055/199908888-bf9285e2-4d66-4e09-879d-f0f5d847d617.png" />
  </p>
  
-
-A dynamic HTML, CSS, and JavaScript web application for Animal Crossing: New Horizon fans to browse through in game collectibles.
-
-All data is pulled from the [ACNH API](http://acnhapi.com/) which was created by [Alexis Lours](https://github.com/alexislours). Many thanks to Alexis for their wonderful creation and hard work. 
-
-#### Live Demo
-Try the live application [here!](https://jimmy-vu.github.io/new-horizon-hub/)
-
 
 #### Technologies Used
 * JavaScript (ES5/ES6)
@@ -24,3 +32,16 @@ Try the live application [here!](https://jimmy-vu.github.io/new-horizon-hub/)
 3. User can view individual items :white_check_mark:
 4. User can favorite items :white_large_square:
 
+## Acknowledgements
+
+* All data is pulled from the [ACNH API](http://acnhapi.com/) which was created by [Alexis Lours](https://github.com/alexislours). Many thanks to Alexis for their wonderful creation and hard work. 
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+[issues-shield]: https://img.shields.io/github/issues/Jimmy-Vu/new-horizon-hub?style=for-the-badge
+[issues-url]: https://github.com/Jimmy-Vu/new-horizon-hub/issues
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=2e67c2
+[linkedin-url]: https://linkedin.com/in/JimmyVu2
+[twitter-shield]: https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white
+[twitter-url]: https://twitter.com/thrownewJimmy
