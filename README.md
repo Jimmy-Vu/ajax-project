@@ -2,6 +2,14 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 [![Twitter][twitter-shield]][twitter-url]
 
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/Jimmy-Vu/new-horizon-hub">
+    <img src="https://user-images.githubusercontent.com/88172055/200084628-c53a6b2b-1377-4e63-aac5-848968152bd7.png" alt="Logo" height="150">
+  </a>
+
+  
 <h3 align="center">New Horizon Hub</h3>
 
   <p align="center">
