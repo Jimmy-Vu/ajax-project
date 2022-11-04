@@ -1,5 +1,10 @@
 # New Horizon Hub
 
+<p align="center">
+  <img width="800" src="https://user-images.githubusercontent.com/88172055/199908888-bf9285e2-4d66-4e09-879d-f0f5d847d617.png" />
+ </p>
+ 
+
 A dynamic HTML, CSS, and JavaScript web application for Animal Crossing: New Horizon fans to browse through in game collectibles.
 
 All data is pulled from the [ACNH API](http://acnhapi.com/) which was created by [Alexis Lours](https://github.com/alexislours). Many thanks to Alexis for their wonderful creation and hard work. 
