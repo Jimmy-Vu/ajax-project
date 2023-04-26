@@ -2,7 +2,7 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 [![Twitter][twitter-shield]][twitter-url]
 
-### Unfortunately, as of April 20, 2023, the ACNH API has gone offline, leaving New Horizon Hub without data. Other APIs are under consideration and NHH will be updated again sometime in the future.
+### 🚨 Unfortunately, as of April 20, 2023, the ACNH API has gone offline, leaving New Horizon Hub without data. Other APIs are under consideration and NHH will be updated again sometime in the future. 🚨
 
 <!-- PROJECT LOGO -->
 <br />
